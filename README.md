@@ -1,10 +1,24 @@
 # Microservices with a Game-On Room
+[Game On!](https://game-on.org/) is both a sample microservices application, and a throwback text adventure brought to you by the wasdev team at IBM. It aims to do a few things:
+
+- Provide a sample microservices-based application.
+- Demonstrate how microservice architectures work from two points of view:
+ - As a Player: Naviagate through a network/maze of rooms, where each room is a unique implementation of a common API. Each room supports chat, and interaction with items (some of which may be in the room, some of which may be separately defined services as well).
+ - As a Developer: Learn about microservice architectures and supporting infrastructure by extending the game with your own services. Write additional rooms or items and see how they interact with the rest of the system.
+
 
 ##Introduction
 
+This walkthrough will guide you through adding a room to a running GameOn server.  You will be shown how to setup a container based room that is implemented in the Go programming language.  There are also instructions for deploying a similar room written in Node.js that is deployed as a Cloud Foundry application in Bluemix.  Both of these rooms take a microservice approach to adding a room to a running GameOn text adventure game server.  
 
 ### Installation prerequisites
-Docker - You will need Docker on your host machine to create a docker image to be pushed to IBM Bluemix Containers
+
+Gameon-room-go when deployed using containers requires:
+
+ - [Docker](https://docs.docker.com/engine/installation/) - You will need Docker on your host machine to create a docker image to be pushed to IBM Bluemix Containers
+ - [IBM Containers CLI](https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic_install)
+
+
 
 ## Create Bluemix accounts and log in
 To build a Game-On room in Bluemix, you will first need a Bluemix account. If you already have an account, you will need to make sure you have an IP address available if you are creating a room in IBM Containers.
@@ -23,7 +37,7 @@ To find this information:
 4. In the Containers tile, information about your IP addresses is listed.
 5. Check that the **Public IPs Requested** field has at least one available IP address.
 
-If you have an IP address available, you're ready to start building your Wish List app. If all of your IP addresses have been used, you will need to release one. In order to release a public IP, install the CF IC plugin, which can be found at the website below.
+If you have an IP address available, you're ready to start building your Wish List app. If all of your IP addresses have been used, you will need to release one. In order to release a public IP, install the [IBM Containers CLI](https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic_installs) plugin, which can be found at the website below.
 
 https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic_installs
 
@@ -52,9 +66,9 @@ For a new room to register with the Game-On server, you must first log into game
 ### Update server.js file
 For the Node.js room, the server.js file contains information about the new room and your user credentials. The user credentials must be set manually. Other variables may be set automatically if the container was built using the Deploy to Bluemix button.
 - **gameonAPIKey** - Use the ApiKey value from the game-on.org user settings page.
-⁃ **gameonUID** : Use the Id value from the game-on.org user settings page.
-⁃ **endpointip** : Use the IP requested or retrieved from earlier steps.
-⁃ **port** : The default value is 3000. This port must be opened when running the container.
+? **gameonUID** : Use the Id value from the game-on.org user settings page.
+? **endpointip** : Use the IP requested or retrieved from earlier steps.
+? **port** : The default value is 3000. This port must be opened when running the container.
 
 ### Update for GO language
 
