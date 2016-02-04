@@ -18,13 +18,21 @@ Gameon-room-go when deployed using containers requires:
  - [Docker](https://docs.docker.com/engine/installation/) - You will need Docker on your host machine to create a docker image to be pushed to IBM Bluemix Containers
  - [IBM Containers CLI](https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic_install)
 
-
-
 ## Create Bluemix accounts and log in
-To build a Game-On room in Bluemix, you will first need a Bluemix account. If you already have an account, you will need to make sure you have an IP address available if you are creating a room in IBM Containers.
+To build a Game-On room in Bluemix, you will first need a Bluemix account. 
 
 ### Sign up and log into Bluemix and DevOps
 Sign up for Bluemix at https://console.ng.bluemix.net and DevOps Services at https://hub.jazz.net. When you sign up, you'll create an IBM ID, create an alias, and register with Bluemix.
+
+
+## Get Game-On API Key and User ID
+For a new room to register with the Game-On server, you must first log into game-on.org and sign in using one of several methods to get your game-on user ID and ApiKey.
+
+1.	Go to https://game-on.org/ and click **Play**
+2.	Select any authentication method to log in with your username and password for that type.
+3.	Click the **Edit Profile** button(the person icon) at the top right.
+4.	You should now see the ID and API key at the bottom of the page.  You may need to refresh the page to generate the API key.  You will need to make note of your API key for later in the walkthrough.
+
 
 ## Make sure a public IP is available in your Bluemix space
 This solution requires a free public IP. In order to determine if a public IP is available, you need to find the number of used and your max quota of IP addresses allowed for your space.
@@ -53,22 +61,15 @@ Once installed:
 
   `cf ic ip release <public IP>`
 
-## Get Game-On API Key and User ID
-For a new room to register with the Game-On server, you must first log into game-on.org and sign in using one of several methods to get your game-on user ID and ApiKey.
-
-1.	Go to https://game-on.org/ and click **Play**
-2.	Select any authentication method to log in with your username and password for that type.
-3.	Click the **Edit Profile** button(the person icon) at the top right.
-4.	You should now see the Id and ApiKey at the bottom of the page.  You may need to refresh the page to generate the ApiKey.
-
 ## Updating Code with Game-On credentials
 
 ### Update server.js file
 For the Node.js room, the server.js file contains information about the new room and your user credentials. The user credentials must be set manually. Other variables may be set automatically if the container was built using the Deploy to Bluemix button.
+
 - **gameonAPIKey** - Use the ApiKey value from the game-on.org user settings page.
-? **gameonUID** : Use the Id value from the game-on.org user settings page.
-? **endpointip** : Use the IP requested or retrieved from earlier steps.
-? **port** : The default value is 3000. This port must be opened when running the container.
+- **gameonUID** : Use the Id value from the game-on.org user settings page.
+- **endpointip** : Use the IP requested or retrieved from earlier steps.
+- **port** : The default value is 3000. This port must be opened when running the container.
 
 ### Update for GO language
 
