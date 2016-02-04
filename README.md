@@ -33,6 +33,25 @@ For a new room to register with the Game-On server, you must first log into game
 3.	Click the **Edit Profile** button(the person icon) at the top right.
 4.	You should now see the ID and API key at the bottom of the page.  You may need to refresh the page to generate the API key.  You will need to make note of your API key for later in the walkthrough.
 
+## Getting the source code
+
+The source code is located on [GitHub](https://github.com/cfsworkload/).  Download the ZIP and unzip the code, or using the GitHub CLI clone the repository with
+
+    git clone https://github.com/cfsworkload/
+
+## Updating Code with Game-On credentials
+
+### Configure Node.js room
+For the Node.js room, the server.js file contains information about the new room and your user credentials. The user credentials must be set manually. 
+
+- **gameonAPIKey** - Use the ApiKey value from the game-on.org user settings page.
+- **gameonUID** : Use the Id value from the game-on.org user settings page.
+- **endpointip** : Use the IP requested or retrieved from earlier steps.
+- **port** : The default value is 3000. This port must be opened when running the container.
+
+### Configure Go room
+
+
 
 ## Make sure a public IP is available in your Bluemix space
 This solution requires a free public IP. In order to determine if a public IP is available, you need to find the number of used and your max quota of IP addresses allowed for your space.
@@ -61,17 +80,6 @@ Once installed:
 
   `cf ic ip release <public IP>`
 
-## Updating Code with Game-On credentials
-
-### Update server.js file
-For the Node.js room, the server.js file contains information about the new room and your user credentials. The user credentials must be set manually. Other variables may be set automatically if the container was built using the Deploy to Bluemix button.
-
-- **gameonAPIKey** - Use the ApiKey value from the game-on.org user settings page.
-- **gameonUID** : Use the Id value from the game-on.org user settings page.
-- **endpointip** : Use the IP requested or retrieved from earlier steps.
-- **port** : The default value is 3000. This port must be opened when running the container.
-
-### Update for GO language
 
 ## Game-On room on Containers
 To build a Game-On room on containers, you create the container locally in Docker using the provided Dockerfile set ups, and then push the container onto Bluemix.
