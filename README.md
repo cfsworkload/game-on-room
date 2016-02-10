@@ -92,11 +92,11 @@ To find this information:
 
 1. Log into Bluemix at https://console.ng.bluemix.net.
 2. Select **DASHBOARD**.
-3. Select the space you where you would like your Telecommunications app to run.
+3. Select the space you where you would like your Game On! room to run.
 4. In the Containers tile, information about your IP addresses is listed.
 5. Check that the **Public IPs Requested** field has at least one available IP address.
 
-If you have an IP address available, you can request a new IP or use an existing available IP to start building your Telecommunications app. If all of your IP addresses have been used, you will need to release one. In either case, to manage your public IP addresses, install the CF IC plugin, which can be found at the website below.
+If you have an IP address available, you can request a new IP or use an existing available IP to start building your Game On! room. If all of your IP addresses have been used, you will need to release one. In either case, to manage your public IP addresses, install the CF IC plugin, which can be found at the website below.
 
 [https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic_installs](https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic_installs)
 
