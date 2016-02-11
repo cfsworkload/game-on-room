@@ -33,7 +33,7 @@ To build a Game On! room in Bluemix, you will first need a Bluemix account.
 Sign up for Bluemix at [https://console.ng.bluemix.net](https://console.ng.bluemix.net) and DevOps Services at [https://hub.jazz.net](https://hub.jazz.net). When you sign up, you'll create an IBM ID, create an alias, and register with Bluemix.
 
 ## Get Game On! ID and Shared Secret
-For a new room to register with the Game-On server, you must first log into game-on.org and sign in using one of several methods to get your **Game On! ID** and **Shared Secret**.
+For a new room to register with the Game On! server, you must first log into game-on.org and sign in using one of several methods to get your **Game On! ID** and **Shared Secret**.
 
 1.  Go to [https://game-on.org/](https://game-on.org/) and click **Play**
 2.  Select an authentication method and log in with your user name and password for that type.
