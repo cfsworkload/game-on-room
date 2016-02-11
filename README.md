@@ -57,7 +57,7 @@ Our source code is stored on GitHub. To fork the project into your own repositor
 ### Go for IBM Containers source code
 
 Download our source code stored at [https://github.com/cfsworkload/gameon-room-go.git](https://github.com/cfsworkload/gameon-room-go.git) and unzip the code on your local machine.
-Alternatively you can use git clone through the GitHub CLI to clone the repository found at https://github.com/cfsworkload/gameon-room-go.git`
+Alternatively you can use git clone through the GitHub CLI to clone the repository found at https://github.com/cfsworkload/gameon-room-go.git.
 
 ## Configure your room
 
