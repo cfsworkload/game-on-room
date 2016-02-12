@@ -159,3 +159,19 @@ To build a Game On! room in a container, first create the container locally in D
 3. With the resulting container ID, use that value to bind to the IP you got earlier with the command:
     
     `cf ic ip bind <IP> <Container ID>`
+
+## Access room on Game On!
+Once the room is set up and it has registered with the server, it will be accessible on [Game On!](https://game-on.org/). It may take a moment for the room to appear.
+
+1. Log in to [Game On!](https://game-on.org/) using the authentication method you used to create your user ID and shared secret for the registered room.
+2. Use the Game On! command `/listmyrooms` from The First Room, to see your list of rooms. Once your room is registered, it will appear in that list.
+3. To get to your room, navigate through the networkor go directly to it with the `/teleport` command from The First Room.
+
+### List of host provided commands
+The Game On! host provides a set a universal commands:
+- **/exits** - List of all exits from the current room.
+- **/help** - List all available commands for the current room.
+- **/sos** - Go back to The First Room.
+
+### The First Room commands
+The First Room is usually where new users will start in Game On!. From there, additional commands are available and maintained by the Game On!. For the list of current commands use the `/help` command.
