@@ -9,12 +9,8 @@ You can learn more about Game On! at [http://game-on.org/](http://game-on.org/).
 
 ## Introduction
 
-This walkthrough will guide you through adding a room to a running Game On! microservices application.  You will be shown how to setup a container-based room as well as a Cloud Foundry application in Bluemix.
-
-There are specfic instructions for different Game On! room options.
-- [Game On! room in Node.js](https://github.com/cfsworkload/gameon-room-nodejs)
-- [Game On! room in Go](https://github.com/cfsworkload/gameon-room-go)
-- [Game On! room in Java](https://github.com/cfsworkload/gameon-room-java.git)
+This walkthrough will guide you through adding a room to a running Game On! microservices application.  You will be shown how to setup a container-based room in the Go language as well as a Cloud Foundry application in Bluemix in Node.js.
+Additionally, a [Game On! room in Java](https://github.com/cfsworkload/gameon-room-java.git) is available as a language option.
 
 
 ### Installation prerequisites
