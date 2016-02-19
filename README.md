@@ -1,26 +1,31 @@
 # Microservices with a Game On! Room
-[Game On!](https://game-on.org/) is both a sample microservices application, and a throwback text adventure brought to you by the wasdev team at IBM. 
-This application demonstrates how microservice architectures work from two points of view:
 
-1. As a Player: Navigate through a network/maze of rooms, where each room is a unique implementation of a common API. Each room supports chat, and interaction with items (some of which may be in the room, some of which might be separately defined services as well).
-2. As a Developer: Learn about microservice architectures and their supporting infrastructure by extending the game with your own services. Write additional rooms or items and see how they interact with the rest of the system.
+[Game On!](https://game-on.org/) is both a sample microservices application, and a throwback text adventure brought to you by the WASdev team at IBM. This application demonstrates how microservice architectures work from two points of view:
 
+1. As a Player: navigate through a network/maze of rooms, where each room is a unique implementation of a common API. Each room supports chat, and interaction with items (some of which may be in the room, some of which might be separately defined services as well).
+2. As a Developer: learn about microservice architectures and their supporting infrastructure by extending the game with your own services. Write additional rooms or items and see how they interact with the rest of the system.
+
+You can learn more about Game On! at [http://game-on.org/](http://game-on.org/).
 
 ## Introduction
 
-This solution explores microservice architectures via a text adventure game. You can learn more about Game On! at [http://game-on.org/](http://game-on.org/).
+This walkthrough will guide you through adding a room to a running Game On! microservices application.  You will be shown how to setup a container-based room as well as a Cloud Foundry application in Bluemix.
 
-This walkthrough will guide you through adding a room to a running Game On! microservices application.  You will be shown how to setup a container-based room that is implemented in the Go programming language.
+There are specfic instructions for different Game On! room options.
+- [Game On! room in Node.js](https://github.com/cfsworkload/gameon-room-nodejs)
+- [Game On! room in Go](https://github.com/cfsworkload/gameon-room-go)
+- [Game On! room in Java](https://github.com/cfsworkload/gameon-room-java.git)
+
 
 ### Installation prerequisites
 
-Gameon-room-nodejs when deployed using an instant runtime requires:
+When deployed using an instant runtime, Gameon-room-nodejs requires:
 
 - [Bluemix account](https://console.ng.bluemix.net)
 - [IBM DevOps Services account](https://hub.jazz.net/register)
 - [GitHub account](https://github.com/)
 
-Game On! when deployed using containers requires:
+When deployed using containers, Game On! requires:
 
 - [Bluemix account](https://console.ng.bluemix.net)
 - [GitHub account](https://github.com/)
@@ -37,7 +42,7 @@ Sign up for Bluemix at [https://console.ng.bluemix.net](https://console.ng.bluem
 ## Get Game On! ID and Shared Secret
 For a new room to register with the Game On! microservices application, you must first log into game-on.org and sign in using one of several methods to get your **Game On! ID** and **Shared Secret**.
 
-1.  Go to [https://game-on.org/](https://game-on.org/) and click **Play**.
+1.  Go to [https://game-on.org/](https://game-on.org/) and click **Enter**.
 2.  Select an authentication method and log in with your user name and password for that type.
 3.  Click the **Edit Profile** button at the upper right.
 4.  You should now see **Game On! ID** and **Shared Secret** near the bottom of the page.  (If necessary, refresh the page, or even log out and log back in, to generate your **Shared Secret**).  Please make note of your **Game On! ID** and **Shared Secret** for later in the walkthrough.
@@ -46,15 +51,17 @@ For a new room to register with the Game On! microservices application, you must
 
 ### Node.js for Cloud Foundry source code
 
-Our source code is stored on GitHub. To fork the project into your own repository navigate to [https://github.com/cfsworkload/gameon-room-nodejs](https://github.com/cfsworkload/gameon-room-nodejs).
+Our source code is stored on GitHub.
 
-1. Navigate to [IBM DevOps](https://hub.jazz.net/).
-2. Click **CREATE PROJECT**.
-3. Select **Link to an existing GitHub repository**.
-4. Select **Link to a Git Repo on GitHub**.
-5. Choose your newly forked project from the dropdown menu that appears. 
-6. Choose your **Region**, **Organization**, and **Space**.  Generally the defaults will be sufficient.
-7. Click **CREATE**.  This will fork your GitHub project into IBM DevOps services, and redirect you to your new project.
+1. Go to the project's [GitHub](https://github.com/cfsworkload/gameon-room-nodejs) repository and fork it to your own GitHub repository.
+2. Navigate to [IBM DevOps](https://hub.jazz.net/).
+3. Click **CREATE PROJECT**.
+4. Enter a name for your Project.
+5. Select **Link to an existing GitHub repository**.
+6. Select **Link to a Git Repo on GitHub**.
+7. Choose your newly forked project from the dropdown menu that appears.
+8. Choose your **Region**, **Organization**, and **Space**.  Generally the defaults will be sufficient.
+9. Click **CREATE**.  This will fork your GitHub project into IBM DevOps services, and redirect you to your new project.
 
 ### Go for IBM Containers source code
 
@@ -66,18 +73,20 @@ Alternatively you can use git clone through the GitHub CLI to clone the reposito
 ### Configure a Node.js room
 
 Once you have created your new project, you will be able to configure the room to your liking.
-1. From your [IBM DevOps](https://hub.jazz.net/) project, click **EDIT CODE** at the upper right corner of your project's overview page.
-2. Select the **server.js** file. You will have to adjust 4 values near the top of the file
-	 
-	 - **gameonAPIKey** - Use the ApiKey value from the game-on.org user settings page.
-	 - **gameonUID** : Use the ID value from the game-on.org user settings page.
-	 - **endpointip** : This will be the host name of your app, which by default will be your projectname.mybluemix.net
-	 - **theRoomName**:  Name your room!
 
-3. Press Play to deploy your app to Bluemix.
+1. From your [IBM DevOps](https://hub.jazz.net/) project, click **EDIT CODE** at the upper right corner of your project's overview page.
+2. Click on the **Play** button found above the README, this will deploy your app to Bluemix.
+3. Click on **DASHBOARD** at the top right of the page to navigate to your [Bluemix](https://bluemix.net) dashboard.
+4. Select the newly deployed application which will be named after your project.
+5. Click **Environment Variables** on the left side of your application's Overview page.
+ - Click **ADD**, for **Name** enter GAMEONUID, and use the **Game On! ID** you got earlier for **Value**.
+ - Click **ADD**, for **Name** enter GAMEONAPIKEY, and use the **Shared Secret** you got earlier for **Value**.
+ - Click **ADD**, for **Name** enter ROOM_NAME, for **Value** enter what you'd like your room to be named.
+ - Click **ADD**, for **Name** enter FULL_NAME, for **Value** enter what you'd like your room's description to be.
+6. Click **SAVE**.
 
 ### Configure a Go room
-Our container will be expecting its parameters in the form of environment variables passed to it as part the Docker run command. An example env file, example-container.env, has been provided and you must edit it to customize your settings. The file itself and container-startup.sh contain commentary regarding each of the environment variables, but in particular you will probably need to edit the following important settings:
+Our container will be expecting its parameters in the form of environment variables passed to it as part the docker run command. An example env file, example-container.env, has been provided and you must edit it to customize your settings. The file itself and container-startup.sh contain commentary regarding each of the environment variables, but in particular you will probably need to edit the following important settings:
 
 - **CONTAINER_IP** This must be set to an available Bluemix public IP address.  You will be given instructions on getting this address in a following section.
 - **GAMEON_ID** This is the **Game On! ID** provided by the microservices application after you login using your browser. (Click on the player icon in the upper right corner of the web page after logging in.)
@@ -163,11 +172,12 @@ To build a Game On! room in a container, first create the container locally in D
     `cf ic ip bind <IP> <Container ID>`
 
 ## Access room on Game On!
-Once the room is set up and it has registered with the microservices application, it will be accessible on [Game On!](https://game-on.org/). It may take a moment for the room to appear.
+Once the room is set up and it has registered with Game On!, it will be accessible on [Game On!](https://game-on.org/). It may take a moment for the room to appear.
 
 1. Log in to [Game On!](https://game-on.org/) using the authentication method you used to create your user ID and shared secret for the registered room.
 2. Use the Game On! command `/listmyrooms` from The First Room, to see your list of rooms. Once your room is registered, it will appear in that list.
-3. To get to your room, navigate through the network or go directly to it using the `/teleport` command from The First Room.
+3. To get to your room, navigate through the network or go directly there by using the `/teleport` command from The First Room.
+4. Look at the Bluemix log console to see "A new connection has been made to the room" command from The First Room.
 
 ### List of host provided commands
 The Game On! host provides a set a universal commands:
@@ -176,4 +186,4 @@ The Game On! host provides a set a universal commands:
 - **/sos** - Go back to The First Room.
 
 ### The First Room commands
-The First Room is usually where new users will start in Game On!. From there, additional commands are available and maintained by the Game On!. For the list of current commands use the `/help` command.
+The First Room is usually where new users will start in Game On!. From there, additional commands are available and maintained by Game On!. For the list of current commands use the `/help` command.
